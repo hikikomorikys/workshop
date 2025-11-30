@@ -16,8 +16,27 @@ int findMax(const vector<int>& numbers)
     }
     return max;
 }
-int main(){
-    vector<int> numbers = {1, 5, 3, 9, 2};
-    cout << "Maximum: " << findMax(numbers) << endl;
+
+int main()
+{
+    int count;
+    cout << "Enter the number of elements: ";
+    cin >> count;
+    if (count <= 0){
+        cout << "Number of elements must be positive" << endl;
+        return 1;
+    }
+    vector<int> numbers(count);
+    cout << "Enter " << count << " numbers:" << endl;
+    for (int i = 0; i < count; i++){
+        cin >> numbers[i];
+    }
+    try{
+        int maximum = findMax(numbers);
+        cout << "Maximum: " << maximum << endl;
+    } catch (const invalid_argument& e){
+        cout << "Error: " << e.what() << endl;
+        return 1;
+    }
     return 0;
 }
