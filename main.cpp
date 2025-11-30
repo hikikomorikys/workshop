@@ -3,20 +3,19 @@
 #include <limits>
 #include <stdexcept>
 using namespace std;
-int findMax(const vector<int>& numbers)
+int findMin(const vector<int>& numbers)
 {
     if (numbers.empty()){
         throw invalid_argument("List is empty");
     }
-    int max = numbers[0];
+    int min = numbers[0];
     for (size_t i = 1; i < numbers.size(); i++){
-        if (numbers[i] > max){
-            max = numbers[i];
+        if (numbers[i] < min){
+            min = numbers[i];
         }
     }
-    return max;
+    return min;
 }
-
 int main()
 {
     int count;
@@ -32,8 +31,8 @@ int main()
         cin >> numbers[i];
     }
     try{
-        int maximum = findMax(numbers);
-        cout << "Maximum: " << maximum << endl;
+        int minimum = findMin(numbers);
+        cout << "Minimum: " << minimum << endl;
     } catch (const invalid_argument& e){
         cout << "Error: " << e.what() << endl;
         return 1;
